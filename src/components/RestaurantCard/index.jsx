@@ -6,7 +6,7 @@ import Text from '../Text';
 import ImageSkeleton from '../ImageSkeleton';
 
 const ResturantCard = ({ restaurant, onClick }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);// imagem NÃO carregou
 
   return (
     <Restaurant onClick={onClick}>
@@ -17,13 +17,13 @@ const ResturantCard = ({ restaurant, onClick }) => {
       </RestaurantInfo>
       <RestaurantPhoto
         imageLoaded={imageLoaded}
-        onLoad={() => setImageLoaded(true)}
+        onLoad={() => setImageLoaded(true)} //se todas as img carregou aparece a imagem
         src={restaurant.photos ? restaurant.photos[0].getUrl() : restaurant.icon}
         alt="foto do restaurante"
       />
-      {!imageLoaded && <ImageSkeleton width="100px" height="100px" />}
+      {!imageLoaded && <ImageSkeleton width="100px" height="100px" />} 
     </Restaurant>
-  );
+  );// se img falso, ent será renderizado nosso skelleton
 };
 
 export default ResturantCard;

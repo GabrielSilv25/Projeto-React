@@ -24,11 +24,14 @@ export const Logo = styled.img`
 
 export const Title = styled(Text)`
   margin: 16px 0;
+  font-family: Cursive, roboto;
+  color: white;
 `;
 
+// a class '.slick-slide' é a base da estilização do slick/slides.
 export const Carousel = styled(Slider)`
   .slick-slide {
-    margin-right: 16px;
+    margin-right: 30px;
   }
 `;
 

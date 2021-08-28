@@ -27,7 +27,11 @@ export const RestaurantPhoto = styled.img`
   object-fit: cover;
   display: ${({ imageLoaded }) => (imageLoaded ? 'block' : 'none')};
 `;
+//o display 'imagemLoaded' faz com que mostre ou não as
+//imagens do restau., assim, apenas quando
+//totalmente carregada aparecerá 
 
 export const Content = styled(Text)`
   margin-top: 5px;
 `;
+

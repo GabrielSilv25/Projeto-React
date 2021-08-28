@@ -4,14 +4,17 @@ import Portal from './Portal';
 import { Overlay, Dialog } from './styles';
 
 const Modal = ({ children, open, onClose }) => {
-  useEffect(() => {
+  useEffect(() => { 
+    /*com essa função pode-se sair da modal
+    usando a tecla 'esc'...
+    */
     function onEsc(event) {
       if (event.keyCode === 27) onClose();
     }
-    window.addEventListener('keydown', onEsc);
+    window.addEventListener('keydown', onEsc);//coloque o nome da função!!!
 
     return () => {
-      window.addEventListener('keydown', onEsc);
+      window.addEventListener('keydown', onEsc);//coloque o nome da função!!!
     };
   }, [onClose]);
 

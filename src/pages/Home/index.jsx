@@ -13,6 +13,7 @@ import {
   Text,
   ImageSkeleton as Skeleton,
 } from '../../components';
+//importações do logo, pesquisa e etc...
 import logo from '../../assets/logo.svg';
 import { Container, Search, Logo, Title, Carousel, Wrapper } from './styles';
 
@@ -24,14 +25,14 @@ const Home = () => {
   const { restaurants, restaurantSelected } = useSelector((state) => state.restaurants);
   const hasRestaurants = restaurants.length > 0;
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    autoplay: true,
-    speed: 300,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    adaptiveHeight: true,
+  const settings = {// estiliza slguns components do carousel
+    dots: false, // São os pontos de troca de slide
+    infinite: true, // Infinidade de informação, causa o lupe 
+    autoplay: true, //automatização do play
+    speed: 300, // a velocidade
+    slidesToShow: 4, // quantos slides mostra
+    slidesToScroll: 4, 
+    adaptiveHeight: true, // se adapta a altura do conteudo em si
   };
 
   const renderCarousel = () => {
@@ -66,15 +67,23 @@ const Home = () => {
     return null;
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e) => { 
+    // é quando o usuário faz a busca de um restaurante
     setValue(e.target.value);
   };
 
   const handleKeyPress = (e) => {
+    // essa função fará com que se ache o restaurante
     if (e.key === 'Enter') {
       setQuery(value);
     }
   };
+
+  /*
+  o modal fará com que informações de edereço,
+  nome e horario de abertura sejam mostradas ao
+  usuario.
+  */
 
   return (
     <Wrapper>
@@ -82,9 +91,10 @@ const Home = () => {
         <Search>
           <Logo src={logo} alt="logo da empresa" />
           <TextField
-            outlined
-            label="Pesquisar"
-            trailingIcon={<MaterialIcon role="button" icon="search" />}>
+            outlined //é oq faz a palavra "pesquisar" subir pra alinhação
+            label="Pesquisar"//é o que mostra dentro do enquadramento de 'search'
+            trailingIcon={<MaterialIcon role="button" icon="search" />}//Ícone da lupa
+          >
             <Input type="text" value={value} onKeyPress={handleKeyPress} onChange={handleChange} />
           </TextField>
           {renderCarousel()}
@@ -96,7 +106,7 @@ const Home = () => {
               <Text size="large">{restaurantSelected?.name}</Text>
               <Text size="medium">{restaurantSelected?.formatted_phone_number}</Text>
               <Text size="medium">{restaurantSelected?.formatted_address}</Text>
-              <Text size="medium">
+              <Text size="medium"> 
                 {restaurantSelected?.opening_hours?.open_now
                   ? 'Aberto agora :)'
                   : 'Fechado neste momento :('}
@@ -110,7 +120,7 @@ const Home = () => {
               <Skeleton width="10px" height="10px" />
             </>
           )}
-        </Modal>
+        </Modal> 
       </Container>
       <Map query={query} placeId={placeId} />
     </Wrapper>

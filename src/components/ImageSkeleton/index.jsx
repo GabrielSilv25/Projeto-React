@@ -20,3 +20,7 @@ export const LoadingSkeleton = styled.div`
 `;
 
 export default ({ width, height }) => <LoadingSkeleton width={width} height={height} />;
+
+/*
+neste aquivo está  config. da animação...
+*/
